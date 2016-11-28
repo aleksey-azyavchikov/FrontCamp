@@ -1,69 +1,26 @@
-var port = 8000;
-var serverUrl = "127.0.0.1";
+import { Storage }  from './components/storage';
+import { ValidationFactory }  from './components/validation';
+import { Constants }   from './components/consts';
+import { HomePage }  from './pages/home/home';
+import { NewsPage }  from './pages/news/news';
 
-var http = require("http");
-var path = require("path");
-var fs = require("fs");
-var checkMimeType = true;
+$(document).ready(() => {
+    let storage = new Storage(localStorage);
+    let apiKey = storage.getItem(Constants.key);
+    if(apiKey !== null) {
+        new NewsPage({
+        key: Constants.key,
+        storage: storage,
+        content: "./pages/news/news.html",
+        validationFactory: new ValidationFactory()
 
-console.log("Starting web server at " + serverUrl + ":" + port);
-
-http.createServer( function(req, res) {
-
-	var now = new Date();
-
-	var filename = req.url || "index.html";
-	var ext = path.extname(filename);
-	var localPath = __dirname;
-	var validExtensions = {
-		".html" : "text/html",
-		".js": "application/javascript",
-		".css": "text/css",
-		".txt": "text/plain",
-		".jpg": "image/jpeg",
-		".gif": "image/gif",
-		".png": "image/png",
-		".woff": "application/font-woff",
-		".woff2": "application/font-woff2"
-	};
-
-	var validMimeType = true;
-	var mimeType = validExtensions[ext];
-	if (checkMimeType) {
-		validMimeType = validExtensions[ext] != undefined;
-	}
-
-	if (validMimeType) {
-		localPath += filename;
-		fs.exists(localPath, function(exists) {
-			if(exists) {
-				console.log("Serving file: " + localPath);
-				getFile(localPath, res, mimeType);
-			} else {
-				console.log("File not found: " + localPath);
-				res.writeHead(404);
-				res.end();
-			}
-		});
-
-	} else {
-		console.log("Invalid file extension detected: " + ext + " (" + filename + ")")
-	}
-
-}).listen(port, serverUrl);
-
-function getFile(localPath, res, mimeType) {
-	fs.readFile(localPath, function(err, contents) {
-		if(!err) {
-			res.setHeader("Content-Length", contents.length);
-			if (mimeType != undefined) {
-				res.setHeader("Content-Type", mimeType);
-			}
-			res.statusCode = 200;
-			res.end(contents);
-		} else {
-			res.writeHead(500);
-			res.end();
-		}
-	});
-}
+        }).buildPage();
+    } else {
+        new HomePage({
+            key: Constants.key,
+            storage: storage,
+            content: "./pages/home/home.html",
+            validationFactory: new ValidationFactory()
+        }).buildPage();
+    }
+});

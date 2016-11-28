@@ -4,13 +4,21 @@
   "scripts": {
     "build": "babel src -d dist --copy-files",
     "start": "nodemon index.js --exec babel-node",
-    "server": "node dist/index.js"
+    "server": "node dist/index.js",
+    "webpack-server": "webpack-dev-server --port=5000"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
-    "proxy-polyfill": "^0.1.6",
+    "babel-loader": "^6.2.8",
     "babel-polyfill": "^6.16.0",
     "babel-preset-latest": "^6.16.0",
-    "nodemon": "^1.11.0"
+    "force-case-sensitivity-webpack-plugin": "^0.2.1",
+    "nodemon": "^1.11.0",
+    "proxy-polyfill": "^0.1.6",
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2",
+    "html-webpack-plugin": "^2.24.1",
+    "copy-webpack-plugin": "^3.0.1",
+    "jquery": "^3.1.1"
   }
 }
