@@ -1,7 +1,7 @@
 
 # FrontCamp
 
-Setup 
+Setup:
 
-npm i 
-npm run webpack-server
+* npm i
+* npm run webpack-server
