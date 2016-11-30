@@ -1,7 +1,11 @@
-import { Page }         from '../../components/page';
-import { ApiInvoker }   from '../../components/api';
+import { Page } from '../../components/page';
+import { ApiInvoker } from '../../components/api';
+import { Router } from '../../components/router';
 
-export class NewsPage extends Page {
+import './news.css';
+//require('./news.html');
+
+export default class NewsPage extends Page {
     /** config { key, content } */
     constructor(config) {
         super(config);
@@ -15,7 +19,7 @@ export class NewsPage extends Page {
     }
 
     buildPage() {
-        super.loadContent(this.content,() => {
+        super.loadContent(this.content, () => {
             this.initialize();
             this.bindHandlers();
         });
@@ -26,10 +30,26 @@ export class NewsPage extends Page {
         this.hideErrorMessage();
     }
 
+    bindHandlers() {
+        $(".reset").click($.proxy(this.resetApiKey, this));
+        $(".show").click($.proxy(this.downloadNews, this));
+    }
+
+    resetApiKey(event) {
+        localStorage.removeItem(this.key);
+        Router.loadPage("Home");
+        return;
+    }
+
     downloadNews() {
-        let apiInvoker = new ApiInvoker(this.storage.getItem(this.key));
-        apiInvoker.getJson((data) => {
-            const template = `${data.articles.map(article => `
+        require.ensure([], (require) => {
+            this.ul.empty();
+            this.ul.children().remove();
+            let module = require('../../components/api');
+            let apiInvoker = new module.ApiInvoker(this.storage.getItem(this.key));
+            apiInvoker.getJson(
+                (data) => {
+                const template = `${data.articles.map(article => `
                 <li>
                     <h4 class="header">${article.title}</h4>
                     <img class="image" src="${article.urlToImage}">
@@ -39,21 +59,11 @@ export class NewsPage extends Page {
                     <div class="time">${article.publishedAt}</div>
                 </li>
             `)}`;
-        this.ul.append(template);
-        },
-        (error) => {
-            this.showErrorMessage(error);
+                this.ul.append(template);
+            },
+                (error) => {
+                    this.showErrorMessage(error);
+                });
         });
-    }
-
-    bindHandlers() {
-        $(".news-reset").click($.proxy(this.resetApiKey, this));
-        $(".news-show").click($.proxy(this.downloadNews, this));
-    }
-
-    resetApiKey(event) {
-        localStorage.removeItem(this.key);
-        location.reload();
-        return;
     }
 }

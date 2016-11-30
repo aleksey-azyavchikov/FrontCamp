@@ -1,7 +1,11 @@
-import { Page }   from '../../components/page';
+import { Page }         from '../../components/page';
 import { ValidationFactory, ValidatonConditions } from '../../components/validation';
+import { Router }       from '../../components/router';
 
-export class HomePage extends Page {
+import './home.css';
+//require('./home.html');
+
+export default class HomePage extends Page {
     /** config { key, content } */
     constructor(config) {
         super(config);
@@ -34,8 +38,7 @@ export class HomePage extends Page {
         let object = this.checkValue(validator, this.apiKey);
         if (object.passed) {
             this.storage.setItem(this.key, this.apiKey);
-            location.reload();
-            //window.location.href = '../news/news.html';
+            Router.loadPage("News");
             return;
         }
         else {

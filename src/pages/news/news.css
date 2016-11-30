@@ -1,41 +1,14 @@
-.container-api {
-    width: 200px;
-    height: 100px;
-    background-color: #d8cece;
-    padding: 10px 15px;
+
+@import '../../common-css/header.css';
+
+.news-container h4 {
+    font-family: "Lucida Bright",Georgia,serif;
     border: 1px solid;
-}
-
-.center {
-    padding-top: 10px;
-}
-
-.error-api {
-    width: 200px;
+    color: #eae4e4;
     padding: 10px;
-    background: #ab4141;
-    border: 1px solid;
-    margin-top: 10px;
-    padding: 10px 15px;
 }
 
-.error-api span{
-    color: white;
-}
-
-h1 {
-    background: black;
-    padding: 20px;
-    color: wheat;
-}
-
-h3 {
-    background: black;
-    color: wheat;
-    padding: 20px;
-}
-
-.news-container {
+.news-container .content {
     background: #e0dee2;
     border: 1px solid;
     margin-top: 10px;
@@ -62,7 +35,7 @@ h3 {
     color: #6ac8ec;
 }
 
-.header {
+.news-container .header {
     font-family: "Lucida Bright",Georgia,serif;
     border: 1px solid;
     color: #eae4e4;
