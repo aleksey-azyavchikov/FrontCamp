@@ -2,7 +2,10 @@
   "name": "front-camp",
   "version": "1.0.0",
   "scripts": {
-    "build": "babel src -d dist --copy-files",
+    "build": "npm run build:dev",
+    "build:dev": "webpack --config config/webpack.dev.config.js",
+    "build:prod": "webpack --config config/webpack.prod.config.js",
+
     "start": "nodemon index.js --exec babel-node",
     "server": "node dist/index.js",
     "webpack-server": "webpack-dev-server --port=3000"
@@ -28,6 +31,8 @@
     "style-loader": "^0.13.1",
     "text-loader": "^0.0.1",
     "webpack": "^1.13.3",
-    "webpack-dev-server": "^1.16.2"
+    "webpack-dev-server": "^1.16.2",
+    "webpack-merge": "^1.0.2",
+    "rimraf": "^2.5.4"
   }
 }
