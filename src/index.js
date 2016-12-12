@@ -1,5 +1,4 @@
 import { Storage } from './components/storage';
-import { ValidationFactory } from './components/validation';
 import { Constants } from './components/consts';
 import { Router } from './components/router';
 

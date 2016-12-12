@@ -41,9 +41,5 @@ module.exports = {
             name: ["vendor"],
             minChunks: 2,
         }),
-    ],
-    devServer: {
-        port: 3000,
-        historyApiFallback: true,
-    },
+    ]
 }

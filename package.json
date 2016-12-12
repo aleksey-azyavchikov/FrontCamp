@@ -6,9 +6,12 @@
     "build:dev": "webpack --config config/webpack.dev.config.js",
     "build:prod": "webpack --config config/webpack.prod.config.js",
 
-    "start": "nodemon index.js --exec babel-node",
-    "server": "node dist/index.js",
-    "webpack-server": "webpack-dev-server --port=3000"
+    "watch": "webpack --config config/webpack.dev.config.js --watch --port=3000",
+    "watch:dev": "npm run build:dev -- --watch",
+    "watch:prod": "npm run build:prod -- --watch",
+
+    "clean": "npm run clean:dist",
+    "clean:dist": "rimraf -- dist/**/*"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
