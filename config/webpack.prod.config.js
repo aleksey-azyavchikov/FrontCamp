@@ -26,5 +26,5 @@ module.exports = webpackMerge(commonConfig, {
         port: 4000,
         historyApiFallback: true
     },
-    contentBase:__dirname + '../dist/prod'
+    contentBase:__dirname + '/dist/prod'
 });

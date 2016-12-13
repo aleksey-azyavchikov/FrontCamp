@@ -1,4 +1,6 @@
 import { Storage }  from './storage';
+import { ValidationFactory }  from './validation';
+import { Constants }  from './consts';
 
 export class Page {
     constructor(config) {
@@ -7,6 +9,7 @@ export class Page {
         throw new TypeError("Derived class doesn't implemented one of methods from class Page");
         this.storage = config && config.storage || new Storage(localStorage);
         this.validationFactory = config && config.validationFactory || new ValidationFactory();
+        this.key = config && config.key || Constants.key;
     }
 
     get errorDiv() {

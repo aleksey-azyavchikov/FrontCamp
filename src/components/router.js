@@ -1,13 +1,8 @@
-import { Constants } from './consts';
-import { ValidationFactory } from './validation';
-import { Storage } from './storage';
-
 export class Router {
-
     static get newsDefaultConfig() {
         return {
             name: "News",
-            content: './pages/news/news.html',
+            content: '../pages/news/news.html',
             module: '/news/news'
         };
     }
@@ -40,11 +35,11 @@ export class Router {
     static buildPage(config) {
         let page = require('bundle!../pages' + config.module)(function(page) {
             new page.default({
-                key: config && config.key || Constants.key,
-                storage: config && config.storage || new Storage(localStorage),
-                content: config && config.content || "", //error potencial
-                validationFactory: config && config.validation || new ValidationFactory(),
-                module: config && config.module || "", //error potencial
+                key: config && config.key,
+                storage: config && config.storage,
+                content: config && config.content,
+                validationFactory: config && config.validation,
+                module: config && config.module,
             }).buildPage();
         });
     }

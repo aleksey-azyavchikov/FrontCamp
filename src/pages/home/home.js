@@ -2,7 +2,7 @@ import { Page }         from '../../components/page';
 import { ValidationFactory, ValidatonConditions } from '../../components/validation';
 import { Router }       from '../../components/router';
 
-import './home.css';
+import './home.scss';
 //require('./home.html');
 
 export default class HomePage extends Page {

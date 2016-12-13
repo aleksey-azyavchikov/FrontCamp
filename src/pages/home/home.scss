@@ -1,0 +1,31 @@
+@import '../../common-css/header.scss';
+
+.home-container {
+    width: 200px;
+    height: 100px;
+    background-color: #d8cece;
+    padding: 10px 15px;
+    border: 1px solid;
+}
+
+.home-container .center {
+    padding-top: 10px;
+}
+
+.custom-panel {
+    margin-left: 20px;
+    padding: 1%;
+    padding-bottom: 0.5% ;
+    max-width: 200px;
+}
+
+.custom-submit-btn {
+    margin-top: 15px;
+}
+
+
+
+
+
+
+

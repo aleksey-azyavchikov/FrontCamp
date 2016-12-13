@@ -2,7 +2,7 @@ import { Page } from '../../components/page';
 import { ApiInvoker } from '../../components/api';
 import { Router } from '../../components/router';
 
-import './news.css';
+import './news.scss';
 //require('./news.html');
 
 export default class NewsPage extends Page {
