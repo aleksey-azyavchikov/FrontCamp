@@ -10,6 +10,7 @@ export class Page {
         this.storage = config && config.storage || new Storage(localStorage);
         this.validationFactory = config && config.validationFactory || new ValidationFactory();
         this.key = config && config.key || Constants.key;
+        this.content = config && config.content || "";
     }
 
     get errorDiv() {
@@ -19,8 +20,11 @@ export class Page {
         return $('span');
     }
 
-    loadContent(htmlPath, handler) {
-        $("#content").load(htmlPath, handler);
+    loadContent(htmlPath, handler, selector) {
+        if (selector === null || selector === undefined) {
+            selector = "#content";
+        }
+        $(selector).load(htmlPath, handler);
     }
 
     showErrorMessage(error) {

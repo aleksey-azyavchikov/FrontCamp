@@ -1,2 +1,4 @@
 /node_modules
 /dist
+/db/mongodb
+/server/node_modules

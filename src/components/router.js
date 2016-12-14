@@ -1,17 +1,43 @@
+import { Constants }  from './consts';
+
 export class Router {
-    static get newsDefaultConfig() {
+    static get homeDefaultConfig() {
         return {
-            name: "News",
-            content: '../pages/news/news.html',
-            module: '/news/news'
+            name: Constants.pages.home.name,
+            content: Constants.pages.home.content,
+            module: Constants.pages.home.module
         };
     }
 
-    static get homeDefaultConfig() {
+    static get newsDefaultConfig() {
         return {
-            name: "Home",
-            content: '../pages/home/home.html',
-            module: '/home/home'
+            name: Constants.pages.news.name,
+            content: Constants.pages.news.content,
+            module: Constants.pages.news.module
+        };
+    }
+
+    static get archiveDefaultConfig() {
+        return {
+            name: Constants.pages.archive.name,
+            content: Constants.pages.archive.content,
+            module: Constants.pages.archive.module
+        };
+    }
+
+    static get loginDefaultConfig() {
+        return {
+            name: Constants.pages.login.name,
+            content: Constants.pages.login.content,
+            module: Constants.pages.login.module
+        };
+    }
+
+    static get navigatorDefaultConfig() {
+        return {
+            name: Constants.pages.navigator.name,
+            content: Constants.pages.navigator.content,
+            module: Constants.pages.navigator.module
         };
     }
 
@@ -20,12 +46,37 @@ export class Router {
             config = {};
         }
         switch (name) {
-            case Router.homeDefaultConfig.name: {
+            case Constants.pages.home.name: {
                 Router.buildPage($.extend(config, Router.homeDefaultConfig));
                 break;
             }
-            case Router.newsDefaultConfig.name: {
+            case Constants.pages.news.name: {
                 Router.buildPage($.extend(config, Router.newsDefaultConfig));
+                break;
+            }
+            case Constants.pages.archive.name: {
+                Router.buildPage($.extend(config, Router.archiveDefaultConfig));
+                break;
+            }
+            case Constants.pages.login.name: {
+                Router.buildPage($.extend(config, Router.loginDefaultConfig));
+                break;
+            }
+            case Constants.pages.navigator.name: {
+                Router.buildPage($.extend(config, Router.navigatorDefaultConfig));
+                break;
+            }
+            default: break;
+        }
+    }
+
+    static loadComponent(name, config) {
+        if (config === undefined || config === null) {
+            config = {};
+        }
+        switch (name) {
+            case Constants.pages.login.name: {
+                Router.buildPage($.extend(config, Router.loginDefaultConfig));
                 break;
             }
             default: break;
@@ -40,7 +91,7 @@ export class Router {
                 content: config && config.content,
                 validationFactory: config && config.validation,
                 module: config && config.module,
-            }).buildPage();
+            }).buildPage(config.selector);
         });
     }
 }

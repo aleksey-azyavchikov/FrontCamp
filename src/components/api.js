@@ -8,7 +8,7 @@ export class ApiInvoker
         return `https://newsapi.org/v1/articles?source=bbc-news&apiKey=${this.apiKey}`;
     }
 
-    getJson(succesHandler, errorHandler, endpointUrl) {
+    getJson(endpointUrl, init, succesHandler, errorHandler) {
         let url = endpointUrl;
         if(url === undefined || url === null) {
             url = this.Url;
@@ -20,10 +20,9 @@ export class ApiInvoker
             succesHandler = function (data) { console.log("success"); console.log(data) } ;
         }
         let request = new Request(url);
-        let init = { method: "GET", mode: "cors" }
-        
+
         fetch(request, init)
-            .then(response => response.json())
+            .then(response => { console.log(response); return response.json() })
             .then(data => succesHandler(data))
             .catch(error => errorHandler(error))
     }

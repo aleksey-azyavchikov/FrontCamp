@@ -12,7 +12,10 @@
     "watch:dev": "npm run server:dev -- --watch",
     "watch:prod": "npm run server:prod -- --watch",
     "clean": "npm run clean:dist",
-    "clean:dist": "rimraf -- dist/**/*"
+    "clean:dist": "rimraf -- dist/**/*",
+    "mongo:server": "mongod --dbpath ./db/mongodb",
+    "mongo:client": "mongo --host localhost --port 27017",
+    "backend": "nodemon ./bin/www"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
@@ -48,6 +51,21 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.13.3",
     "webpack-dev-server": "^1.16.2",
-    "webpack-merge": "^1.0.2"
+    "webpack-merge": "^1.0.2",
+    "express": "^4.14.0",
+    "express-jwt": "^3.4.0",
+    "express-sessions": "^1.0.5",
+    "jsonwebtoken": "^6.2.0",
+    "mongoose": "^4.7.2",
+    "morgan": "^1.7.0",
+    "angular-route": "^1.5.5",
+    "angular-ui-bootstrap": "^1.3.2",
+    "angularjs": "0.0.1",
+    "body-parser": "~1.13.2",
+    "client-sessions": "^0.7.0",
+    "connect-mongodb": "^1.1.5",
+    "cookie-parser": "~1.3.5",
+    "debug": "~2.2.0",
+    "serve-favicon": "~2.3.0"
   }
 }
