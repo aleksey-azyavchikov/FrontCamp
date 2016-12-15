@@ -41,6 +41,14 @@ export class Router {
         };
     }
 
+    static get studentsDefaultConfig() {
+        return {
+            name: Constants.pages.students.name,
+            content: Constants.pages.students.content,
+            module: Constants.pages.students.module
+        };
+    }
+
     static loadPage(name, config) {
         if (config === undefined || config === null) {
             config = {};
@@ -66,6 +74,10 @@ export class Router {
                 Router.buildPage($.extend(config, Router.navigatorDefaultConfig));
                 break;
             }
+            case Constants.pages.students.name: {
+                Router.buildPage($.extend(config, Router.studentsDefaultConfig));
+                break;
+            };
             default: break;
         }
     }

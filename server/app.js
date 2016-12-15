@@ -11,6 +11,7 @@ var users = require('./routes/users');
 
 var app = express();
 var database = require('./config/database');
+var gradesRequests = require('./requests/grades');
 
 var Schema = mongoose.Schema;
 
@@ -23,6 +24,13 @@ var article = new Schema({
   "publishedAt" :"string"
 }, {collection: "news"});
 var Article = mongoose.model('Article', article, 'news');
+
+var grade = new Schema({
+  "student_id": "number",
+  "class_id": "number",
+  "scores": "array"
+}, {colletion: "grades" })
+var Grade = mongoose.model('Grade', grade, 'grades')
 
 mongoose.connect(database.path,  function(err) {
   if(err) {
@@ -63,6 +71,19 @@ app.get('/news', (request, response, next) => {
     error ? response.send(error) : response.send(data);
   })
 });
+
+app.get('/bestclass', (request, response, next) => {
+  Grade.aggregate(gradesRequests.bestclass, function(error, data) {
+    error ? response.send(error) : response.send(data);
+  })
+});
+
+app.get('/grades', (request, response, next) => {
+  Grade.find({}, function(error, data) {
+    error ? response.send(error) : response.send(data);
+  })
+});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

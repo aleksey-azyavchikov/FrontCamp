@@ -26,4 +26,8 @@ export class ApiInvoker
             .then(data => succesHandler(data))
             .catch(error => errorHandler(error))
     }
+
+    static buildUrl(server, path) {
+        return server + path;
+    }
 }

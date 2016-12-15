@@ -46,7 +46,7 @@ export default class ArchivePage extends Page {
             this.contentArchive.children().remove();
             let module = require('../../components/api');
             let apiInvoker = new module.ApiInvoker(this.storage.getItem(this.key));
-            apiInvoker.getJson("http://localhost:3001/news", { method: "GET", mode: "cors" },
+            apiInvoker.getJson(ApiInvoker.buildUrl(Constants.apiServer, Constants.apiEndPoints.news), { method: "GET", mode: "cors" },
                 (data) => {
                     const template = `${data.map(article => `
                         <div class="panel panel-default archive-panel">

@@ -25,7 +25,18 @@ export const Constants = {
             name: "Navigator",
             content: "../pages/partial/navigator/navigator.html",
             module: "/partial/navigator/navigator"
+        },
+        students: {
+            name: "Students",
+            content: "../pages/students/students.html",
+            module: "/students/students"
         }
+    },
+    apiServer: "http://localhost:3001",
+    apiEndPoints: {
+        news: "/news",
+        grades: "/grades",
+        bestclass: "/bestclass"
     },
     database: "mongodb://localhost:27017/newsdb"
 }
