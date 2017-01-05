@@ -8,46 +8,22 @@ var mongoose = require('mongoose');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var grade = require('./routes/grade');
+var news = require('./routes/news');
 
 var app = express();
-var database = require('./config/database');
-var gradesRequests = require('./requests/grades');
 
-var Schema = mongoose.Schema;
+var database = require('./db/database');
 
-var article = new Schema({
-  "author": "string",
-  "title": "string",
-  "description": "string",
-  "url": "string",
-  "urlToImage": "string",
-  "publishedAt" :"string"
-}, {collection: "news"});
-var Article = mongoose.model('Article', article, 'news');
-
-var grade = new Schema({
-  "student_id": "number",
-  "class_id": "number",
-  "scores": "array"
-}, {colletion: "grades" })
-var Grade = mongoose.model('Grade', grade, 'grades')
-
-mongoose.connect(database.path,  function(err) {
-  if(err) {
-    console.log('connection error with db tamonsys', err);
-  } else {
-    console.log('connection successful with db');
-  }
-});
+database.configureShemes();
+database.connect();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-// 
 //app.set('view engine', 'html');
 //app.engine('html', ejs.renderFile)
-
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -65,25 +41,8 @@ app.use((request, response, next) => {
 
 app.use('/', index);
 app.use('/users', users);
-
-app.get('/news', (request, response, next) => {
-  Article.find({}, function(error, data) {
-    error ? response.send(error) : response.send(data);
-  })
-});
-
-app.get('/bestclass', (request, response, next) => {
-  Grade.aggregate(gradesRequests.bestclass, function(error, data) {
-    error ? response.send(error) : response.send(data);
-  })
-});
-
-app.get('/grades', (request, response, next) => {
-  Grade.find({}, function(error, data) {
-    error ? response.send(error) : response.send(data);
-  })
-});
-
+app.use('/grade', grade)
+app.use('/news', news)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

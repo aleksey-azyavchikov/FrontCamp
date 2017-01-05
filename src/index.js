@@ -8,6 +8,6 @@ require('bootstrap-loader');
 $(document).ready(() => {
     let storage = new Storage(localStorage);
     storage.itemIsExist(Constants.key) 
-        ? Router.loadPage("Home") 
-        : Router.loadPage("Login");
+        ? Router.loadComponent("Home") 
+        : Router.loadComponent("Login");
 });

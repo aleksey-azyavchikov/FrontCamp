@@ -1,19 +1,13 @@
-import { Page } from '../../../components/page';
+import { BaseComponent } from '../../../components/base-component';
+
 import { Router } from '../../../components/router';
 
 import './navigator.scss';
 
-export default class Navigator extends Page {
+export default class Navigator extends BaseComponent {
     /** config { key, content } */
     constructor(config) {
         super(config);
-    }
-
-    buildPage(selector) {
-        super.loadContent(this.content, () => {
-            this.initialize();
-            this.bindHandlers();
-        }, selector);
     }
 
     initialize() {
@@ -26,7 +20,7 @@ export default class Navigator extends Page {
             $(selector).children().removeClass('active')
             let target = $(event.target); 
             target.parent().addClass('active')
-            Router.loadPage(target.text(), { selector: 'page' });
+            Router.loadComponent(target.text(), { selector: 'page' });
         })
     }
 }

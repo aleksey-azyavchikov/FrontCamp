@@ -1,11 +1,11 @@
-import { Page } from '../../components/page';
+import { BaseComponent } from '../../components/base-component';
 import { Constants } from '../../components/consts';
 import { ApiInvoker } from '../../components/api';
 import { Router } from '../../components/router';
 
 import './archive.scss';
 
-export default class ArchivePage extends Page {
+export default class ArchivePage extends BaseComponent {
     constructor(config) {
         super(config);
         this.key = config && config.key || "";
@@ -16,14 +16,7 @@ export default class ArchivePage extends Page {
     get contentArchive() {
         return $(".content-archive");
     }
-
-    buildPage(selector) {
-        super.loadContent(this.content, () => {
-            this.initialize();
-            this.bindHandlers();
-        }, selector);
-    }
-
+    
     initialize() {
         console.log("Initilize News Page");
         this.hideErrorMessage();
@@ -36,7 +29,7 @@ export default class ArchivePage extends Page {
 
     resetApiKey(event) {
         localStorage.removeItem(this.key);
-        Router.loadPage("Login");
+        Router.loadComponent("Login");
         return;
     }
 

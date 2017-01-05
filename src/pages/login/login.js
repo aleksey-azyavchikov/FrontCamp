@@ -1,10 +1,11 @@
-import { Page } from '../../components/page';
+import { BaseComponent } from '../../components/base-component';
+
 import { ValidationFactory, ValidatonConditions } from '../../components/validation';
 import { Router } from '../../components/router';
 
 import './login.scss';
 
-export default class Login extends Page {
+export default class Login extends BaseComponent {
     /** config { key, content } */
     constructor(config) {
         super(config);
@@ -12,13 +13,6 @@ export default class Login extends Page {
 
     get apiKey() {
         return $("input").val();
-    }
-
-    buildPage(selector) {
-        super.loadContent(this.content, () => {
-            this.initialize();
-            this.bindHandlers();
-        }, selector);
     }
 
     initialize() {
@@ -35,7 +29,7 @@ export default class Login extends Page {
         let object = this.checkValue(validator, this.apiKey);
         if (object.passed) {
             this.storage.setItem(this.key, this.apiKey);
-            Router.loadPage("Home");
+            Router.loadComponent("Home");
             return;
         }
         else {

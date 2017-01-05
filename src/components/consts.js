@@ -30,13 +30,18 @@ export const Constants = {
             name: "Students",
             content: "../pages/students/students.html",
             module: "/students/students"
+        },
+        editor: {
+            name: "Editor",
+            content: "../pages/partial/editor/editor.html",
+            module: "/partial/editor/editor"
         }
     },
     apiServer: "http://localhost:3001",
     apiEndPoints: {
         news: "/news",
-        grades: "/grades",
-        bestclass: "/bestclass"
+        grades: "/grade",
+        bestclass: "/grade/bestclass"
     },
     database: "mongodb://localhost:27017/newsdb"
 }

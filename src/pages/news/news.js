@@ -1,11 +1,11 @@
-import { Page } from '../../components/page';
+import { BaseComponent } from '../../components/base-component';
+
 import { ApiInvoker } from '../../components/api';
 import { Router } from '../../components/router';
-import Navigator from '../../components/router';
 
 import './news.scss';
 
-export default class NewsPage extends Page {
+export default class NewsPage extends BaseComponent {
     /** config { key, content } */
     constructor(config) {
         super(config);
@@ -16,15 +16,9 @@ export default class NewsPage extends Page {
         return $(".content-news");
     }
 
-    buildPage(selector) {
-        super.loadContent(this.content, () => {
-            this.initialize();
-            this.bindHandlers();
-        }, selector);
-    }
-
     initialize() {
         console.log("Initilize News Page");
+        //Router.loadComponent("Editor", { selector: "editor" });
         this.hideErrorMessage();
     }
 
@@ -35,7 +29,7 @@ export default class NewsPage extends Page {
 
     resetApiKey(event) {
         localStorage.removeItem(this.key);
-        Router.loadPage("Login");
+        Router.loadComponent("Login");
         return;
     }
 

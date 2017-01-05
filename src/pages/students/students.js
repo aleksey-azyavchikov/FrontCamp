@@ -1,11 +1,12 @@
-import { Page } from '../../components/page';
+import { BaseComponent } from '../../components/base-component';
+
 import { Router } from '../../components/router';
 import { ApiInvoker } from '../../components/api';
 import { Constants } from '../../components/consts';
 
 import './students.scss';
 
-export default class StudentsPage extends Page {
+export default class StudentsPage extends BaseComponent {
     /** config { key, content } */
     constructor(config) {
         super(config);
@@ -13,13 +14,6 @@ export default class StudentsPage extends Page {
 
     get tbody() {
         return $("tbody");
-    }
-
-    buildPage(selector) {
-        super.loadContent(this.content, () => {
-            this.initialize();
-            this.bindHandlers();
-        }, selector);
     }
 
     initialize() {

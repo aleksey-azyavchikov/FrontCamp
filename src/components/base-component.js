@@ -2,7 +2,7 @@ import { Storage }  from './storage';
 import { ValidationFactory }  from './validation';
 import { Constants }  from './consts';
 
-export class Page {
+export class BaseComponent {
     constructor(config) {
         if (this.initialize === undefined ||
             this.bindHandlers === undefined)
@@ -20,11 +20,26 @@ export class Page {
         return $('span');
     }
 
+    build(selector) {
+        this.loadContent(this.content, () => {
+            this.initialize();
+            this.bindHandlers();
+        }, selector);
+    }
+
     loadContent(htmlPath, handler, selector) {
         if (selector === null || selector === undefined) {
             selector = "#content";
         }
         $(selector).load(htmlPath, handler);
+    }
+
+    initialize() {
+        // override
+    }
+
+    bindHandlers() {
+        // override
     }
 
     showErrorMessage(error) {
