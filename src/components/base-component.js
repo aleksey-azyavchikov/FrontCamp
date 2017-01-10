@@ -29,7 +29,7 @@ export class BaseComponent {
 
     loadContent(htmlPath, handler, selector) {
         if (selector === null || selector === undefined) {
-            selector = "#content";
+            selector = "content";
         }
         $(selector).load(htmlPath, handler);
     }

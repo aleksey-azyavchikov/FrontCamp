@@ -35,6 +35,21 @@ export const Constants = {
             name: "Editor",
             content: "../pages/partial/editor/editor.html",
             module: "/partial/editor/editor"
+        },
+        footer: {
+            name: "Footer",
+            content: "../pages/partial/footer/footer.html",
+            module: "/partial/footer/footer"
+        },
+        brand: {
+            name: "Brand",
+            content: "../pages/partial/brand/brand.html",
+            module: "/partial/brand/brand"
+        },
+        base: {
+            name: "Base",
+            content: "../pages/base/base.html",
+            module: "/base/base"
         }
     },
     apiServer: "http://localhost:3001",

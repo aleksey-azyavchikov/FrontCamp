@@ -1,10 +1,8 @@
 import { BaseComponent } from '../../components/base-component';
-
 import { ApiInvoker } from '../../components/api';
 import { Router } from '../../components/router';
 
 import './news.scss';
-
 export default class NewsPage extends BaseComponent {
     /** config { key, content } */
     constructor(config) {
@@ -18,7 +16,6 @@ export default class NewsPage extends BaseComponent {
 
     initialize() {
         console.log("Initilize News Page");
-        //Router.loadComponent("Editor", { selector: "editor" });
         this.hideErrorMessage();
     }
 
@@ -29,7 +26,7 @@ export default class NewsPage extends BaseComponent {
 
     resetApiKey(event) {
         localStorage.removeItem(this.key);
-        Router.loadComponent("Login");
+        Router.loadComponent("Base", { selector: "base"});
         return;
     }
 

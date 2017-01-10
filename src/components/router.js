@@ -6,37 +6,7 @@ export class Router {
         if (config === undefined || config === null) {
             config = {};
         }
-        switch (name) {
-            case Constants.pages.home.name: {
-                Router.buildComponent($.extend(config, Router.buildDefaultConfig(name)));
-                break;
-            }
-            case Constants.pages.news.name: {
-                Router.buildComponent($.extend(config, Router.buildDefaultConfig(name)));
-                break;
-            }
-            case Constants.pages.archive.name: {
-                Router.buildComponent($.extend(config, Router.buildDefaultConfig(name)));
-                break;
-            }
-            case Constants.pages.login.name: {
-                Router.buildComponent($.extend(config, Router.buildDefaultConfig(name)));
-                break;
-            }
-            case Constants.pages.navigator.name: {
-                Router.buildComponent($.extend(config, Router.buildDefaultConfig(name)));
-                break;
-            }
-            case Constants.pages.students.name: {
-                Router.buildComponent($.extend(config, Router.buildDefaultConfig(name)));
-                break;
-            }
-            case Constants.pages.editor.name: {
-                Router.buildComponent($.extend(config, Router.buildDefaultConfig(name)));
-                break;
-            };
-            default: break;
-        }
+        Router.buildComponent($.extend(config, Router.buildDefaultConfig(name)));
     }
 
     static buildDefaultConfig(name) {

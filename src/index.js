@@ -6,8 +6,5 @@ import './index.scss';
 require('bootstrap-loader');
 
 $(document).ready(() => {
-    let storage = new Storage(localStorage);
-    storage.itemIsExist(Constants.key) 
-        ? Router.loadComponent("Home") 
-        : Router.loadComponent("Login");
+        Router.loadComponent("Base", { selector: "base" }) 
 });

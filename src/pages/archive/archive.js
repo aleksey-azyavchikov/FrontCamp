@@ -29,7 +29,7 @@ export default class ArchivePage extends BaseComponent {
 
     resetApiKey(event) {
         localStorage.removeItem(this.key);
-        Router.loadComponent("Login");
+        Router.loadComponent("Base", { selector: "base"});
         return;
     }
 
