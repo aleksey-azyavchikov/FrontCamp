@@ -7,7 +7,6 @@ export default class NewsPage extends BaseComponent {
     /** config { key, content } */
     constructor(config) {
         super(config);
-        this.apiInvoker = null;
     }
 
     get contentNews() {
@@ -36,7 +35,7 @@ export default class NewsPage extends BaseComponent {
             this.contentNews.children().remove();
             let module = require('../../components/api');
             let apiInvoker = new module.ApiInvoker(this.storage.getItem(this.key));
-            apiInvoker.getJson(null, { method: "GET", mode: "cors" },
+            apiInvoker.invoke(null, { method: "GET", mode: "cors" },
                 (data) => {
                 const template = `${data.articles.map(article => `
                     <div class="panel panel-default news-panel">

@@ -54,9 +54,16 @@ export const Constants = {
     },
     apiServer: "http://localhost:3001",
     apiEndPoints: {
-        news: "/news",
-        grades: "/grade",
-        bestclass: "/grade/bestclass"
+        get: {
+            news: "/news",
+            grades: "/grade",
+            bestclass: "/grade/bestclass"
+        },
+        post: {
+            news: {
+                article: "/news/article"
+            }
+        }
     },
     database: "mongodb://localhost:27017/newsdb"
 }

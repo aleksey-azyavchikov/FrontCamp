@@ -7,27 +7,30 @@
                 <div class="col-xs-12 col-sm-4 col-md-4">
                     <div class="form-group">
                         <label for="title">Title</label>
-                        <input class="form-control" type="text" id="title">
+                        <input class="form-control" name="title" type="text" id="title" />
                     </div>
                     <div class="thumbnail">
-                        <img class="img-responsive" src="../../../resources/images/default-thumbnail.jpg">
+                        <img class="img-responsive" name="image" src="../../../resources/images/default-thumbnail.jpg">
                     </div>
                     <div class="form-group">
-                        <input type="file" value="Load Image"/>
+                        <input type="file" name="file" value="Load Image" />
                     </div>
                     <div class="form-group">
                         <label for="description">Description</label>
-                        <input class="form-control" id="description" />
+                        <input class="form-control" name="description" id="description" />
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-4 col-md-4">
                     <div class="form-group">
                         <label for="content">Main Content</label>
-                        <textarea class="form-control" id="content" />
+                        <textarea class="form-control" name="main" id="content" />
                     </div>
                     <div class="form-group">
                         <label for="author">Author</label>
-                        <input class="form-control" type="text" id="author">
+                        <input class="form-control" type="text" name="author" id="author" />
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-primary">Submit</button>
                     </div>
                 </div>
                 <div class="col-md-2 col-sm-2">
@@ -35,4 +38,5 @@
             </div>
         </div>
     </div>
+</div>
 </div>

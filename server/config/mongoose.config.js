@@ -1,24 +1,14 @@
 var mongoose = require('mongoose');
+var models = require('../models/models.export');
 
 var Schema = mongoose.Schema;
 
-var article = new Schema({
-    "author": "string",
-    "title": "string",
-    "description": "string",
-    "url": "string",
-    "urlToImage": "string",
-    "publishedAt": "string"
-}, { collection: "news" });
-var Article = mongoose.model('Article', article, 'news');
+var article = new Schema(models.Article.configMongoose(), { collection: "news" });
+var ArticleSchema = mongoose.model('Article', article, 'news');
 
-var grade = new Schema({
-    "student_id": "number",
-    "class_id": "number",
-    "scores": "array"
-}, { colletion: "grades" })
-var Grade = mongoose.model('Grade', grade, 'grades');
+var grade = new Schema(models.Grade.configMongoose(), { colletion: "grades" })
+var GradeSchema = mongoose.model('Grade', grade, 'grades');
 
-var Shemes = { Shemes: { Article, Grade } }
+var Schemes = { Schemes: { ArticleSchema, GradeSchema } }
 
-module.exports = Shemes;
+module.exports = Schemes;

@@ -21,8 +21,8 @@ export default class StudentsPage extends BaseComponent {
         this.tbody.empty();
         this.tbody.children().remove();
         let apiInvoker = new ApiInvoker(null);
-        apiInvoker.getJson(
-            ApiInvoker.buildUrl(Constants.apiServer, Constants.apiEndPoints.bestclass),
+        apiInvoker.invoke(
+            ApiInvoker.buildUrl(Constants.apiServer, Constants.apiEndPoints.get.bestclass),
             { method: "GET", mode: "cors" },
             (data) => {
                 const template = `${data.map(classitem => `
