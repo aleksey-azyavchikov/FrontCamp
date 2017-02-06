@@ -1,4 +1,5 @@
-/node_modules
-/dist
-/db/mongodb
+/application/node_modules
+/application/dist
+/application/db/mongodb
+
 /server/node_modules
