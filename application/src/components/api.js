@@ -1,18 +1,22 @@
 export class ApiInvoker
 {
-    constructor(apiKey) {
-        this.apiKey = apiKey;
+    constructor() {
     }
 
-    get Url() {
-        return `https://newsapi.org/v1/articles?source=bbc-news&apiKey=${this.apiKey}`;
+    static getInstance() {
+        if (this.storagapiInvokere === undefined || this.apiInvoker === null) {
+            this.apiInvoker = new ApiInvoker();
+        }  
+        return this.apiInvoker;
+    }
+    
+
+    getNewsApiUrl(apiKey) {
+        return `https://newsapi.org/v1/articles?source=bbc-news&apiKey=${apiKey}`;
     }
 
     invoke(endpointUrl, init, succesHandler, errorHandler) {
         let url = endpointUrl;
-        if(url === undefined || url === null) {
-            url = this.Url;
-        }
         if(errorHandler === undefined || errorHandler === null) {
             errorHandler = function (error) { console.log("error"); console.log(error) } ;
         }

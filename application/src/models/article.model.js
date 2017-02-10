@@ -3,9 +3,10 @@ export class Article {
         this.author = "";
         this.title = "";
         this.description = "";
+        this.keyWords = "";
         this.url = "";
         this.urlToImage = "";
         this.publishedAt = "";
-        this.image = {};
+        this.image = { data: null, contentType: "" };
     }
 }

@@ -15,11 +15,7 @@ module.exports = webpackMerge(commonConfig, {
         new webpack.NoErrorsPlugin(),
         new ForceCaseSensitivityPlugin(),
         new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.UglifyJsPlugin(),
-        new HtmlWebpackPlugin({
-            hash: false,
-            template: './index.html'
-        }),
+        new webpack.optimize.UglifyJsPlugin()
     ],
 
     devServer: {

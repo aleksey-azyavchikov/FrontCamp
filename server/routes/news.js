@@ -7,7 +7,7 @@ var mapper = require('../helpers/mapper')
 /* GET home page. */
 router.get('/', function(request, response, next) {
   mongooseConfig.Schemes.ArticleSchema.find({}, function(error, data) {
-    error ? response.send(error) : response.send(data);
+    error ? response.send(error) : response.send({articles: data});
   })
 });
 

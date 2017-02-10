@@ -1,4 +1,11 @@
 export class Storage  {
+    static getInstance() {
+        if (this.storage === undefined || this.storage === null) {
+            this.storage = new Storage();
+        }  
+        return this.storage;
+    }
+
     constructor(storage) {
         this.storage = storage || localStorage; 
     }

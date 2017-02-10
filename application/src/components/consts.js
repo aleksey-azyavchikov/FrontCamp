@@ -67,3 +67,10 @@ export const Constants = {
     },
     database: "mongodb://localhost:27017/newsdb"
 }
+
+export let PageEnum = {
+    News: "News",
+    Archive: "Archive",
+    Student: "Students",
+    Editor: "Editor",
+}

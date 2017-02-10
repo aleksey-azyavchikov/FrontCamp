@@ -9,13 +9,6 @@ module.exports = webpackMerge(commonConfig,  {
         filename: '[name].js',
         path: './dist/dev'
     },
-    plugins: [
-        new HtmlWebpackPlugin({
-            hash: true,
-            template: './index.html'
-        }),
-    ],
-
     devServer: {
         port: 3000,
         historyApiFallback: true,

@@ -1,24 +1,26 @@
 var path = require('path');
 var webpack = require('webpack');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var HtmlWebpackTemplate = require('html-webpack-template');
 
 module.exports = {
     context: path.join(__dirname, '../src'),
     entry: {
-        index: './index.js',
+        index: './index1.jsx',
         vendor: ["jquery"]
     },
     resolve: {
-        exteinsions: ['', '.js']
+        exteinsions: ['', '.js', '.jsx']
     },
     module: {
         loaders: [
             {
-                test: /\.js$/,
+                test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader',
                 query: {
-                    presets: ['es2015', 'latest']
+                    presets: ['es2015', 'react']
                 }
             },
             {
@@ -36,6 +38,13 @@ module.exports = {
     },
 
     plugins: [
+         new HtmlWebpackPlugin({
+            template: HtmlWebpackTemplate,
+            title: 'Webpack demo',
+            appMountId: 'app', // Generate #app where to mount
+            mobile: true, // Scale page on mobile
+            inject: false, // html-webpack-template requires this to work
+        }),
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery",
@@ -63,6 +72,7 @@ module.exports = {
             to: './',
         }], {
             ignore: [
+                '*.html',
                 '*.scss',
                 '*.js'
             ]
