@@ -7,7 +7,7 @@ var HtmlWebpackTemplate = require('html-webpack-template');
 module.exports = {
     context: path.join(__dirname, '../src'),
     entry: {
-        index: './index1.jsx',
+        index: './index.jsx',
         vendor: ["jquery"]
     },
     resolve: {
