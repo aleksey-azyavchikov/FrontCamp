@@ -1,0 +1,49 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'run',
+1 verbose cli   'start' ]
+2 info using npm@3.10.3
+3 info using node@v6.4.0
+4 verbose run-script [ 'prestart', 'start', 'poststart' ]
+5 info lifecycle webpack-angular@1.0.0~prestart: webpack-angular@1.0.0
+6 silly lifecycle webpack-angular@1.0.0~prestart: no script for prestart, continuing
+7 info lifecycle webpack-angular@1.0.0~start: webpack-angular@1.0.0
+8 verbose lifecycle webpack-angular@1.0.0~start: unsafe-perm in lifecycle true
+9 verbose lifecycle webpack-angular@1.0.0~start: PATH: C:\Users\Aliaksei_Aziauchykau\AppData\Roaming\nvm\v6.4.0\node_modules\npm\bin\node-gyp-bin;D:\MySpace\Projects\FrontCamp\angular-application\node_modules\.bin;C:\Program Files\nodejs;C:\ProgramData\Oracle\Java\javapath;D:\Soft\OralceTestDb\product\12.1.0\dbhome_1\bin;C:\OracleEE\product\12.1.0\dbhome_1\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\Skype\Phone\;c:\Users\Aliaksei_Aziauchykau\AppData\Roaming\nvm;C:\Program Files\nodejs;c:\Users\Aliaksei_Aziauchykau\AppData\Roaming\nvm\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files\dotnet\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files (x86)\Sennheiser\SoftphoneSDK\;C:\Program Files (x86)\LINQPad5;c:\Program Files\Java\jdk1.8.0_101\bin\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SDKs\TypeScript\1.0\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files (x86)\Microsoft Emulator Manager\1.0\;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;c:\Program Files\MongoDB\Server\3.4\bin;C:\Users\Aliaksei_Aziauchykau\.dnx\runtimes\dnx-clr-win-x86.1.0.0-rc1-update2\bin;C:\Users\Aliaksei_Aziauchykau\.dnx\bin;C:\Program Files (x86)\Microsoft VS Code\bin;C:\tools\gittfs;C:\Program Files\Collaborator Client
+10 verbose lifecycle webpack-angular@1.0.0~start: CWD: D:\MySpace\Projects\FrontCamp\angular-application
+11 silly lifecycle webpack-angular@1.0.0~start: Args: [ '/d /s /c',
+11 silly lifecycle   'node node_modules/.bin/webpack-dev-server --content-base app' ]
+12 silly lifecycle webpack-angular@1.0.0~start: Returned: code: 1  signal: null
+13 info lifecycle webpack-angular@1.0.0~start: Failed to exec start script
+14 verbose stack Error: webpack-angular@1.0.0 start: `node node_modules/.bin/webpack-dev-server --content-base app`
+14 verbose stack Exit status 1
+14 verbose stack     at EventEmitter.<anonymous> (C:\Users\Aliaksei_Aziauchykau\AppData\Roaming\nvm\v6.4.0\node_modules\npm\lib\utils\lifecycle.js:242:16)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at EventEmitter.emit (events.js:191:7)
+14 verbose stack     at ChildProcess.<anonymous> (C:\Users\Aliaksei_Aziauchykau\AppData\Roaming\nvm\v6.4.0\node_modules\npm\lib\utils\spawn.js:40:14)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at ChildProcess.emit (events.js:191:7)
+14 verbose stack     at maybeClose (internal/child_process.js:852:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:215:5)
+15 verbose pkgid webpack-angular@1.0.0
+16 verbose cwd D:\MySpace\Projects\FrontCamp\angular-application
+17 error Windows_NT 10.0.10586
+18 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "run" "start"
+19 error node v6.4.0
+20 error npm  v3.10.3
+21 error code ELIFECYCLE
+22 error webpack-angular@1.0.0 start: `node node_modules/.bin/webpack-dev-server --content-base app`
+22 error Exit status 1
+23 error Failed at the webpack-angular@1.0.0 start script 'node node_modules/.bin/webpack-dev-server --content-base app'.
+23 error Make sure you have the latest version of node.js and npm installed.
+23 error If you do, this is most likely a problem with the webpack-angular package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     node node_modules/.bin/webpack-dev-server --content-base app
+23 error You can get information on how to open an issue for this project with:
+23 error     npm bugs webpack-angular
+23 error Or if that isn't available, you can get their info via:
+23 error     npm owner ls webpack-angular
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]

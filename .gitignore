@@ -2,4 +2,6 @@
 /application/dist
 /application/db/mongodb
 
+/angular-application/node_modules
+
 /server/node_modules

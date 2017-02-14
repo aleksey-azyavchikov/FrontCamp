@@ -7,20 +7,19 @@ var HtmlWebpackTemplate = require('html-webpack-template');
 module.exports = {
     context: path.join(__dirname, '../src'),
     entry: {
-        index: './index.jsx',
-        vendor: ["jquery"]
+        index: './index.js',
     },
     resolve: {
-        exteinsions: ['', '.js', '.jsx']
+        exteinsions: ['', '.js']
     },
     module: {
         loaders: [
             {
-                test: /\.(js|jsx)$/,
+                test: /\.(js)$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader',
                 query: {
-                    presets: ['es2015', 'react']
+                    presets: ['es2015', 'latest']
                 }
             },
             {
@@ -39,11 +38,11 @@ module.exports = {
 
     plugins: [
          new HtmlWebpackPlugin({
-            template: HtmlWebpackTemplate,
+            template: '../src/index.html',
+            ngApp: 'app',
             title: 'Webpack demo',
-            appMountId: 'app', // Generate #app where to mount
             mobile: true, // Scale page on mobile
-            inject: false, // html-webpack-template requires this to work
+            inject: 'html', // html-webpack-template requires this to work
         }),
         new webpack.ProvidePlugin({
             $: "jquery",
@@ -63,10 +62,6 @@ module.exports = {
             Tooltip: "exports-loader?Tooltip!bootstrap/js/dist/tooltip",
             Util: "exports-loader?Util!bootstrap/js/dist/util",
         }),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: ["vendor"],
-            minChunks: 2,
-        }),
         new CopyWebpackPlugin([{
             from: './',
             to: './',
@@ -74,7 +69,8 @@ module.exports = {
             ignore: [
                 '*.html',
                 '*.scss',
-                '*.js'
+                '*.js',
+                '*.jsx'
             ]
         }),
         new webpack.HotModuleReplacementPlugin()
