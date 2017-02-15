@@ -2,8 +2,11 @@ import { ApiInvoker } from '../components/api';
 import { Constants } from '../components/consts';
 
 module.exports = function(ngModule) { 
-    ngModule.controller('articleShowerCtrl', function($scope) {
+    ngModule.controller('articleShowerCtrl',  function($scope) {
+        const ctrl = this;
         let apiInvoker = ApiInvoker.getInstance();
+
+        console.log("reree");
 
         let getToLocalServerUrl = function (endpoint) {
             let url = ApiInvoker.buildUrl(
@@ -12,17 +15,24 @@ module.exports = function(ngModule) {
             return url;
         }
 
-        $scope.articles = [];
-        $scope.getArticles = function() {
+        ctrl.getArticles = function() {
+            console.log("Scope", ctrl);
             apiInvoker.invoke(
                 getToLocalServerUrl(Constants.apiEndPoints.get.news),
                 { method: "GET", mode: "cors" },
-                (data) => { $scope.articles = data; $scope.tr = "rer" },
+                (data) => $scope.$apply(() =>  {
+                     ctrl.articles = data.articles
+                 }),
                 (error) => console.error
             );
-            return $scope.articles;
         }
+        
+        ctrl.click = function(v) {
+            console.log(v);
+        }
+        ctrl.fuck = "Fuck";
+        ctrl.ol = [1,2,3];
 
-        $scope.are = "Truly";
+        ctrl.getArticles();
     });
 }

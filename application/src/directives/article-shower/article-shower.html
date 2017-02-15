@@ -1,16 +1,21 @@
 <brand-bar></brand-bar>
-<div class="common-pad shower">
+<div class="students-container common-pad">
     <div class="panel panel-default">
-        <!-- Default panel contents -->
         <div class="panel-heading">Panel heading</div>
-
-        <!-- Table -->
-        <ul>
-            <li ng-repeat="article in articles">
-                <span>{{article.title}}</span>
-            </li>
-            {{tr}}
-        </ul>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Article id</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="article in ctrl.articles">
+                    <td>{{article._id}}</td>
+                    <td><a href="#!/article/{{article._id}}/edit">---</a></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 <footer></footer>

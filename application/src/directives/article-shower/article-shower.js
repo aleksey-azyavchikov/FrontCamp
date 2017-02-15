@@ -1,6 +1,3 @@
-import { ApiInvoker } from '../../components/api';
-import { Constants } from '../../components/consts';
-
 require('../../common-css/common.scss');
 require('./article-shower.scss');
 
@@ -12,7 +9,8 @@ module.exports = function(ngModule) {
             restrict: 'E',
             scope: {},
             template: require('./article-shower.html'),
-            controller: 'articleShowerCtrl'
+            controller: 'articleShowerCtrl',
+            controllerAs: 'ctrl'
         }
     }
 }

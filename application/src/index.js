@@ -9,13 +9,13 @@ ngModule.config(['$locationProvider', '$routeProvider',
     ($locationProvider, $routeProvider) => {
     $locationProvider.hashPrefix('!');
     $routeProvider
-        .when('/shower', {
-            controller: 'articleShowerCtrl', 
+        .when('/articles', {
             template : '<article-shower></article-shower>'})
-        .when('/editor', {
-            controller: 'articleEditorCtrl', 
+        .when('/article/add', {
             template : '<article-editor></article-editor>'})
-        .otherwise({ redirectTo: '/' });
+        .when('/article/:id/edit', {
+            template : '<article-editor></article-editor>'})
+        .otherwise({ redirectTo: '/articles' });
 }]);
 
 require('./directives')(ngModule);
