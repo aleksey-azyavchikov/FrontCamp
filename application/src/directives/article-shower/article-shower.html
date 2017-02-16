@@ -1,14 +1,15 @@
 <brand-bar></brand-bar>
 <div class="container">
     <div class="panel panel-default">
-        <div class="panel-heading">Panel heading</div>
+        <div class="panel-heading">Articles</div>
         <table class="table">
             <thead>
                 <tr>
+                    <th>Title</th>
                     <th>Article id</th>
                     <th>Action
                         <span>:</span>
-                        <a href="#!/article/{{article._id}}/edit">
+                        <a href="#!/article/add">
                             <span>Add<span>
                             <span class="glyphicon glyphicon-plus"></span>
                         </a>
@@ -17,6 +18,7 @@
             </thead>
             <tbody>
                 <tr ng-repeat="article in ctrl.articles">
+                    <td>{{article.title}}</td>
                     <td><a href="#!/article/{{article._id}}/edit">{{article._id}}</a></td>
                     <td>    
                             <a href="#!/article/{{article._id}}/edit">

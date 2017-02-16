@@ -5,9 +5,16 @@ var models = require('../models/models.export');
 var mapper = require('../helpers/mapper')
 
 /* GET home page. */
-router.get('/', function(request, response, next) {
+router.get('/articles', function(request, response, next) {
   mongooseConfig.Schemes.ArticleSchema.find({}, function(error, data) {
     error ? response.send(error) : response.send({articles: data});
+  });
+
+});
+
+router.get('/:articleId', function(request, response, next) {
+  mongooseConfig.Schemes.ArticleSchema.find({_id: request.params.articleId }, function(error, data) {
+    error ? response.send(error) : response.send({ article: data });
   });
 
 });
@@ -26,7 +33,7 @@ router.post('/article', function(request, response, next) {
   })
 });
 
-router.delete('/articles', function(request, response, next) {
+router.delete('/article', function(request, response, next) {
   console.log(request);
   mongooseConfig.Schemes.ArticleSchema.find({_id: request.body.id}).remove(function(error) {
     error 

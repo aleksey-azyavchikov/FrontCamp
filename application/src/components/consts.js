@@ -55,7 +55,10 @@ export const Constants = {
     apiServer: "http://localhost:3001",
     apiEndPoints: {
         get: {
-            news: "/news",
+            news: {
+                articles: "/news/articles",
+                articleById: "news/"
+            },
             grades: "/grade",
             bestclass: "/grade/bestclass"
         },
@@ -66,7 +69,7 @@ export const Constants = {
         },
         delete: {
             news: {
-                article: "/news/articles"
+                article: "/news/article"
             }
         }
     },

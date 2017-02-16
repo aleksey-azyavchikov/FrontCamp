@@ -13,7 +13,7 @@ ngModule.config(['$locationProvider', '$routeProvider',
             template : '<article-shower></article-shower>'})
         .when('/article/add', {
             template : '<article-editor></article-editor>'})
-        .when('/article/:id/edit', {
+        .when('/article/:articleId/edit', {
             template : '<article-editor></article-editor>'})
         .otherwise({ redirectTo: '/articles' });
 }]);

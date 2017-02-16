@@ -15,7 +15,7 @@ module.exports = function(ngModule) {
 
         ctrl.getArticles = function() {
             apiInvoker.invoke(
-                getToLocalServerUrl(Constants.apiEndPoints.get.news),
+                getToLocalServerUrl(Constants.apiEndPoints.get.news.articles),
                 { method: "GET", mode: "cors" },
                 (data) => {
                      ctrl.articles = data.articles;

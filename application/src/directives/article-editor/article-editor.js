@@ -9,7 +9,8 @@ module.exports = function(ngModule) {
             restrict: 'E',
             scope: {},
             template: require('./article-editor.html'),
-            controller: 'articleEditorCtrl'
+            controller: 'articleEditorCtrl',
+            controllerAs: 'ctrl'
         }
     }
 }
