@@ -35,7 +35,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use((request, response, next) => {
   response.header("Access-Control-Allow-Origin", "*");
+  response.header("Access-Control-Allow-Origin", "http://localhost:3000");
   response.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
+  response.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, DELETE");
   next();
 })
 

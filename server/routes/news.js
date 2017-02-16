@@ -8,7 +8,8 @@ var mapper = require('../helpers/mapper')
 router.get('/', function(request, response, next) {
   mongooseConfig.Schemes.ArticleSchema.find({}, function(error, data) {
     error ? response.send(error) : response.send({articles: data});
-  })
+  });
+
 });
 
 router.post('/article', function(request, response, next) {
@@ -20,14 +21,24 @@ router.post('/article', function(request, response, next) {
   new mongooseConfig.Schemes.ArticleSchema(article).save((error, document) => {
     if (error) request.send("Error");
   });
-  response.send('ok');
-  // var article = new mongooseConfig.Shemes.Article({
-
-  // });
-  // mongooseConfig.Shemes.Article.create(,()=>{
-
-  // });
+  mongooseConfig.Schemes.ArticleSchema.find({}, function(error, data) {
+    error ? response.send(error) : response.send({articles: data});
+  })
 });
+
+router.delete('/articles', function(request, response, next) {
+  console.log(request);
+  mongooseConfig.Schemes.ArticleSchema.find({_id: request.body.id}).remove(function(error) {
+    error 
+      ? response.send(error) 
+      : mongooseConfig.Schemes.ArticleSchema.find({}, function(error, data) {
+        error ? 
+          response.send(error) : 
+          response.send({articles: data});
+    });
+  });
+})
+
 
 
 module.exports = router;

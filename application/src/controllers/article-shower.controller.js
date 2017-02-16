@@ -6,8 +6,6 @@ module.exports = function(ngModule) {
         const ctrl = this;
         let apiInvoker = ApiInvoker.getInstance();
 
-        console.log("reree");
-
         let getToLocalServerUrl = function (endpoint) {
             let url = ApiInvoker.buildUrl(
                 Constants.apiServer, 
@@ -16,22 +14,28 @@ module.exports = function(ngModule) {
         }
 
         ctrl.getArticles = function() {
-            console.log("Scope", ctrl);
             apiInvoker.invoke(
                 getToLocalServerUrl(Constants.apiEndPoints.get.news),
                 { method: "GET", mode: "cors" },
-                (data) => $scope.$apply(() =>  {
-                     ctrl.articles = data.articles
-                 }),
-                (error) => console.error
+                (data) => {
+                     ctrl.articles = data.articles;
+                     $scope.$apply();
+                 },
+                (error) => console.error(error)
             );
         }
-        
-        ctrl.click = function(v) {
-            console.log(v);
+
+        ctrl.deleteArticle = function(id) {
+            if(!confirm("Are you sure?")) return;
+            apiInvoker.invoke(
+                getToLocalServerUrl(Constants.apiEndPoints.delete.news.article),
+                { method: "DELETE", headers: { "Content-Type": "application/json" }, mode: "cors", body: JSON.stringify({id: id}) },
+                (data) => {
+                     ctrl.getArticles();
+                 },
+                (error) => console.error(error)
+            );
         }
-        ctrl.fuck = "Fuck";
-        ctrl.ol = [1,2,3];
 
         ctrl.getArticles();
     });

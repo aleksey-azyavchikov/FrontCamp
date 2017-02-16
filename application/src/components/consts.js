@@ -63,6 +63,11 @@ export const Constants = {
             news: {
                 article: "/news/article"
             }
+        },
+        delete: {
+            news: {
+                article: "/news/articles"
+            }
         }
     },
     database: "mongodb://localhost:27017/newsdb"

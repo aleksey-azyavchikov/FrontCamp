@@ -30,6 +30,7 @@ export class ApiInvoker
                 switch(init.method) {
                     case "POST": return response;
                     case "GET" : return response.json();
+                    case "DELETE" : return response.json();
                 } 
             })
             .then(data => succesHandler(data))
