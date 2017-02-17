@@ -1,28 +1,28 @@
 var webpackConfig = require('./webpack.dev.config.js');
 module.exports = function(config) {
   config.set({
-    basePath: '../src',
+    basePath: '',
+    frameworks: ['jasmine'],
     files: [
-      // all files ending in "_test"
-      '*.spec.js',
-      '**/*.spec.js'
-      // each file acts as entry point for the webpack configuration
+      {pattern: './karma-shim.config.js', watched: false}
     ],
 
-    preprocessors: {
-      // add webpack as preprocessor
-      '*spec.js': ['webpack'],
-      '**/*spec.js': ['webpack']
-    },
+    browsers: ['PhantomJS'],
 
     webpack: webpackConfig,
+    webpackMiddleware: {
+      noInfo: true
+    },
+
+    preprocessors: {
+      './karma-shim.config.js': ['webpack']
+    },
 
     singleRun: true,
     autoWatch: false,
     frameworks: ['jasmine'],
-    browsers: ['Chrome'],
     plugins: [
-      'karma-chrome-launcher',
+      'karma-phantomjs-launcher',
       'karma-jasmine',
       'karma-webpack'
     ]
