@@ -13,7 +13,7 @@ router.get('/articles', function(request, response, next) {
 });
 
 router.get('/:articleId', function(request, response, next) {
-  mongooseConfig.Schemes.ArticleSchema.find({_id: request.params.articleId }, function(error, data) {
+  mongooseConfig.Schemes.ArticleSchema.findById(request.params.articleId , function(error, data) {
     error ? response.send(error) : response.send({ article: data });
   });
 

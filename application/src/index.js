@@ -18,7 +18,8 @@ ngModule.config(['$locationProvider', '$routeProvider',
         .otherwise({ redirectTo: '/articles' });
 }]);
 
-require('./directives')(ngModule);
+require('./services')(ngModule);
 require('./controllers')(ngModule);
+require('./directives')(ngModule);
 
 

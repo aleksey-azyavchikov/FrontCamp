@@ -8,27 +8,31 @@
                 <div class="col-xs-12 col-sm-4 col-md-4">
                     <div class="form-group">
                         <label for="title">Title</label>
-                        <input class="form-control" name="title" type="text" id="title" />
+                        <input class="form-control" ng-model="ctrl.article.title" name="title" type="text" id="title" />
                     </div>
                     <div class="thumbnail">
-                        <img class="img-responsive" name="image" src="../../resources/images/default-thumbnail.jpg">
+                        <img class="img-responsive" name="image" src="{{ctrl.getImage()}}">
                     </div>
                     <div class="form-group">
                         <input type="file" name="file" value="Load Image" />
                     </div>
                     <div class="form-group">
-                        <label for="description">Description</label>
-                        <input class="form-control" name="description" id="description" />
+                        <label for="keyWords">Key words</label>
+                        <input class="form-control" ng-model="ctrl.article.keyWords" name="description" id="keyWords" />
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-4 col-md-4">
                     <div class="form-group">
-                        <label for="content">Main Content</label>
-                        <textarea class="form-control" name="main" id="content" />
+                        <label for="description">Description</label>
+                        <textarea class="form-control" ng-model="ctrl.article.description" name="main" id="description" />
+                    </div>
+                    <div class="form-group">
+                        <label for="source">Source</label>
+                        <input class="form-control" type="text" ng-model="ctrl.article.url"  name="source" id="source" />
                     </div>
                     <div class="form-group">
                         <label for="author">Author</label>
-                        <input class="form-control" type="text" name="author" id="author" />
+                        <input class="form-control" type="text" ng-model="ctrl.article.author"  name="author" id="author" />
                     </div>
                     <div>
                         <button type="button" class="btn btn-primary">Submit</button>

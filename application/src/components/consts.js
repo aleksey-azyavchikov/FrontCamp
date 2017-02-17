@@ -57,7 +57,7 @@ export const Constants = {
         get: {
             news: {
                 articles: "/news/articles",
-                articleById: "news/"
+                articleById: "/news/"
             },
             grades: "/grade",
             bestclass: "/grade/bestclass"
