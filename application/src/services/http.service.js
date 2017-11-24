@@ -8,7 +8,7 @@ module.exports = function (ngModule) {
             apiInvoker: apiInvoker,
             getArticles: function (success) {
                 this.apiInvoker.invoke(
-                    ApiInvoker.buildUrl(Constants.apiServer, Constants.apiEndPoints.get.news.articles),
+                    ApiInvoker.buildUrl(Constants.apiServer, Constants.apiEndPoints.news.article.getArticles()),
                     { method: "GET", mode: "cors" },
                     (data) => {
                         success(data);
@@ -19,14 +19,45 @@ module.exports = function (ngModule) {
             deleteArticle: function (id, success) {
                 if (!confirm("Are you sure?")) return;
                 apiInvoker.invoke(
-                    ApiInvoker.buildUrl(Constants.apiServer, Constants.apiEndPoints.delete.news.article),
+                    ApiInvoker.buildUrl(Constants.apiServer, Constants.apiEndPoints.news.article.deleteArticle(id)),
                     { method: "DELETE", headers: { "Content-Type": "application/json" }, mode: "cors", body: JSON.stringify({ id: id }) },
                     (data) => {
                         success(data);
                     },
                     (error) => console.error(error)
                 );
+            },
+            getArticleById: function (id, success) {
+                apiInvoker.invoke(
+                    ApiInvoker.buildUrl(Constants.apiServer, Constants.apiEndPoints.news.article.getArticle(id)),
+                    { method: "GET", mode: "cors" },
+                    (data) => {
+                        success(data);
+                    },
+                    (error) => console.error(error)
+                )
+            },
+            updateArticle: function (id, article, success) {
+                apiInvoker.invoke(
+                    ApiInvoker.buildUrl(Constants.apiServer, Constants.apiEndPoints.news.article.putArticle(id)),
+                    { method: "PUT", headers: { "Content-Type": "application/json" }, mode: "cors", body: JSON.stringify({ article: article }) },
+                    (data) => {
+                        success(data);
+                    },
+                    (error) => console.error(error)
+                );
+            },
+            addArticle: function (article, success) {
+                apiInvoker.invoke(
+                    ApiInvoker.buildUrl(Constants.apiServer, Constants.apiEndPoints.news.article.postArticle()),
+                    { method: "POST", headers: { "Content-Type": "application/json" }, mode: "cors", body: JSON.stringify({ article: article }) },
+                    (data) => {
+                        success(data);
+                    },
+                    (error) => console.error(error)
+                );
             }
+
         }
     });
 }

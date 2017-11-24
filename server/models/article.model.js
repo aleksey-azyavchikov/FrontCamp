@@ -7,7 +7,8 @@ class Article {
         this.url = "";
         this.urlToImage = "";
         this.publishedAt = "";
-        this.image = { data: Buffer, contentType: String };
+        this.keyWords = "";
+        this.image = { data: null, contentType: "" };
     }
 
     static configMongoose() {
@@ -18,7 +19,21 @@ class Article {
         url: String,
         urlToImage: String,
         publishedAt: String,
-        image: { data: Buffer , contentType: String }
+        keyWords: String,
+        image: { data: String , contentType: String }
+        }
+    }
+
+    static getObjectToUpdate(article) {
+        return {
+            image: article.image, 
+            title: article.title, 
+            description: article.description, 
+            author: article.author,
+            url: article.url,
+            publishedAt: article.publishedAt,
+            urlToImage: article.urlToImage,
+            keyWords: article.keyWords
         }
     }
 }

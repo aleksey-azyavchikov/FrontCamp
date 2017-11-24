@@ -1,4 +1,4 @@
-export const Constants = {
+export var Constants = {
     key : "BbcNews",
     pages: { 
         home: { 
@@ -54,27 +54,30 @@ export const Constants = {
     },
     apiServer: "http://localhost:3001",
     apiEndPoints: {
-        get: {
-            news: {
-                articles: "/news/articles",
-                articleById: "/news/"
-            },
-            grades: "/grade",
-            bestclass: "/grade/bestclass"
-        },
-        post: {
-            news: {
-                article: "/news/article"
+        news: {
+            article: {
+                
+                getArticles: function() {
+                    return "/news/articles";
+                },
+                postArticle: function() {
+                    return "/news/article"
+                },
+                getArticle: function(id) {
+                    return `/news/article/${id}`
+                },
+                putArticle: function(id) {
+                    return `/news/article/${id}`
+                },
+                deleteArticle: function(id) {
+                    return `/news/article/${id}`
+                },
             }
         },
-        delete: {
-            news: {
-                article: "/news/article"
-            }
-        }
     },
     database: "mongodb://localhost:27017/newsdb"
 }
+
 
 export let PageEnum = {
     News: "News",
